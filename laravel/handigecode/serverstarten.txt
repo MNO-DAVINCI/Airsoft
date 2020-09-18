@@ -1,0 +1,22 @@
+php artisan serve  // start laravel
+php artisan make:model modelnaam -a // maak een model, controller (resource), migrations, factory en seeder
+php artisan migrate // gebruik dit om database door te zetten
+php artisan make:migration update_table_product --table=products // als je table wilt updaten
+php artisan migrate:reset // update voor tabelle //reset migrate
+php artisan config:cache //dingen veranderd in je instellingen (.env bijvoorbeeld) dit runnen om de update mee te nemem / uit te voeren.
+php artisan cache:clear // views updaten/ bootstrap problems dit runnen
+php artisan route:clear //nieuwe routes toegevoegd maar worden ze niet herkent? dit runnen. 
+php artisan tinker // om in de termenial in te komen 
+factory(App\Product::class, 5)->create(); // fake data creëren
+php artisan --version // laravel version check 
+ctrl + shift + r = harde refresh en cache weggooien
+
+nieuwe pagina? 
+
+1. route toevoegen in web.php
+2. controllerfunctie invulling geven (juiste data opzoeken)
+3. juiste gegevens meegeven aan de view (vanuit de controller) (compact!)
+4. view variable gebruiken om op het scherm uit te pmepen
+
+
+          

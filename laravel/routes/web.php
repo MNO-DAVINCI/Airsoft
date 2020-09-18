@@ -13,6 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [
+    'uses' => 'App\Http\Controllers\AirsoftController@index',
+    'as' => 'index'
+]);
+
+
+route::get('/add', [
+    'uses' => 'App\Http\Controllers\AirsoftController@getaddpage',
+    'as'=> 'addName'
+]);
+
+
+Route::post('/add', [
+    'uses' => 'App\Http\Controllers\AirsoftController@store',
+    'as' => 'postName',
+]);
