@@ -100,8 +100,9 @@ class AirsoftController extends Controller
      * @param  \App\Models\Airsoft  $airsoft
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Airsoft $airsoft)
+    public function destroy($id)
     {
         //
+        DB::table('airsofts')->where('id', $id)->delete();
     }
 }
