@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 use App\Models\Airsoft;
 use Illuminate\Http\Request;
-use DB;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Redis;
 
 class AirsoftController extends Controller
 {
@@ -16,7 +17,8 @@ class AirsoftController extends Controller
     public function index()
     {
         //
-        $airsofts = DB::table('airsofts')->get();
+        $airsofts = Airsoft::all();
+        // get fucntion aanpassen
         return view('index', compact('airsofts'));
     }
 
@@ -104,5 +106,12 @@ class AirsoftController extends Controller
     {
         //
         DB::table('airsofts')->where('id', $id)->delete();
+        return redirect()->route('index');
+    }
+
+    public function deletepage()
+    {
+        //
+        return view('/delete');
     }
 }

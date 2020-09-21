@@ -29,3 +29,13 @@ Route::post('/add', [
     'uses' => 'App\Http\Controllers\AirsoftController@store',
     'as' => 'postName',
 ]);
+
+route::get('/delete/{id}', [
+    'uses' => 'App\Http\Controllers\AirsoftController@destroy',
+    'as'=> 'deletepage'
+]);
+
+// route::post('/delete', [
+//     'uses' => 'App\Http\Controllers\AirsoftController@destroy',
+//     'as'=> 'deleteName'
+// ]);

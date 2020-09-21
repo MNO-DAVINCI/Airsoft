@@ -11,7 +11,8 @@
     <title>Document</title>
 </head>
 <body>
-<form action="{{ route('postName') }}" method="post" >
+
+<form action="{{ route('deleteName') }}" method="post" >
     @csrf
     <label for="exampleInputEmail1">want to delete this waepon?</label>
     <button type="submit" class="btn btn-primary btn-lg btn-block">yes</button>
