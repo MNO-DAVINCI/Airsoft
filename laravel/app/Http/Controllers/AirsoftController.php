@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Airsoft;
 use Illuminate\Http\Request;
+use DB;
+
 
 class AirsoftController extends Controller
 {
@@ -14,8 +16,8 @@ class AirsoftController extends Controller
     public function index()
     {
         //
-        $airsoft = DB::select('select * from airsofts');
-        return view('index',['name'=>$name]);
+        $airsofts = DB::table('airsofts')->get();
+        return view('index', compact('airsofts'));
     }
 
     /**
@@ -89,6 +91,7 @@ class AirsoftController extends Controller
     public function update(Request $request, Airsoft $airsoft)
     {
         //
+
     }
 
     /**
