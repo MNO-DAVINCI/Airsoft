@@ -24,7 +24,6 @@ route::get('/add', [
     'as'=> 'addName'
 ]);
 
-
 Route::post('/add', [
     'uses' => 'App\Http\Controllers\AirsoftController@store',
     'as' => 'postName',
@@ -34,8 +33,12 @@ route::get('/delete/{id}', [
     'uses' => 'App\Http\Controllers\AirsoftController@destroy',
     'as'=> 'deletepage'
 ]);
+route::get('/update/{id}', [
+    'uses' => 'App\Http\Controllers\AirsoftController@getIDForUpdate',
+    'as'=> 'updatepage'
+]);
 
-// route::post('/delete', [
-//     'uses' => 'App\Http\Controllers\AirsoftController@destroy',
-//     'as'=> 'deleteName'
-// ]);
+route::post('/update', [
+    'uses' => 'App\Http\Controllers\AirsoftController@update',
+    'as'=> 'update'
+]);

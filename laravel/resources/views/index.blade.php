@@ -17,7 +17,7 @@
 <div class="card">
   <div class="card-body">
   <h5>{{$airsoft->name}}</h5> 
-  <a href="#"> <span class="far fa-edit float-right" style="margin:5px;"></span></a>
+  <a href="/update/{{ $airsoft->id }}"> <span class="far fa-edit float-right" style="margin:5px;"></span></a>
   <a href="{{URL::route('deletepage', $airsoft->id)}}"> <span class="fas fa-times text-danger float-right" style="margin:5px;"></span></a>
   </div>
   

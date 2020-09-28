@@ -44,6 +44,14 @@ class AirsoftController extends Controller
         return view('/add');
     }
 
+    public function getIDForUpdate($id)
+    {
+        //
+        $airsoft = Airsoft::find($id);
+        return view('/update', ['weapon' => $airsoft]);
+        
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -56,7 +64,7 @@ class AirsoftController extends Controller
         $airsoft = new Airsoft;
         $airsoft->name = $request->input('name');
         $airsoft->save();
-        return redirect()->route('index')->with('success', 'Successfully purchased products!');
+        return redirect()->route('index')->with('success', 'Successfully added products!');
     }
 
 
@@ -81,6 +89,7 @@ class AirsoftController extends Controller
     public function edit(Airsoft $airsoft)
     {
         //
+
     }
 
     /**
@@ -90,10 +99,13 @@ class AirsoftController extends Controller
      * @param  \App\Models\Airsoft  $airsoft
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Airsoft $airsoft)
+    public function update(Request $request)
     {
         //
-
+        $id = $request->input('id');
+        $name = $request->input('name');
+        $update = DB::update('update airsofts set name = (?) where id = (?)', [$name, $id]);
+        return redirect()->route('index');
     }
 
     /**
