@@ -16,10 +16,8 @@ class AirsoftController extends Controller
      */
     public function index()
     {
-        //
         $airsofts = Airsoft::all();
-        // get fucntion aanpassen
-        return view('index', compact('airsofts'));
+        return view('index', $airsofts); //compacts functie weggehaald, is hier namelijk overbodig. Lees de php documentatie wat compact doet.
     }
 
     /**
@@ -29,28 +27,12 @@ class AirsoftController extends Controller
      */
     public function create()
     {
-        //
-        
+        return view('/create');     
     }
-        /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function getaddpage()
-    {
-        //
-        return view('/add');
-    }
+    
+    //hier heb ik de getaddpage functie verwijderd, daarvoor MOET je namelijk de bovenstaande method create gebruiken. Lees de omschrijving van die method!!!!
 
-    public function getIDForUpdate($id)
-    {
-        //
-        $airsoft = Airsoft::find($id);
-        return view('/update', ['weapon' => $airsoft]);
-        
-    }
+    //hier heb ik de getIDForUpdate($id) method verwijderd, daarvoor MOET je namelijk de edit method gebruiken. 
 
     /**
      * Store a newly created resource in storage.
@@ -60,7 +42,8 @@ class AirsoftController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //hier mist validatie, zie https://laravel.com/docs/8.x/validation
+        
         $airsoft = new Airsoft;
         $airsoft->name = $request->input('name');
         $airsoft->save();
@@ -77,7 +60,7 @@ class AirsoftController extends Controller
      */
     public function show(Airsoft $airsoft)
     {
-        //
+        return view("/show", $airsoft);
     }
 
     /**
@@ -88,8 +71,7 @@ class AirsoftController extends Controller
      */
     public function edit(Airsoft $airsoft)
     {
-        //
-
+        return view('/edit', $airsoft);
     }
 
     /**
@@ -99,12 +81,14 @@ class AirsoftController extends Controller
      * @param  \App\Models\Airsoft  $airsoft
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, Airsoft $airsoft)
     {
-        //
-        $id = $request->input('id');
-        $name = $request->input('name');
-        $update = DB::update('update airsofts set name = (?) where id = (?)', [$name, $id]);
+        //hier mist validatie, zie https://laravel.com/docs/8.x/validation
+        
+        //je hoeft niet met queries te gaan werken, gebruik wat Laravel je aanbied!
+        $airsoft->name = $request->input('name');
+        $airsoft->save();
+        
         return redirect()->route('index');
     }
 
@@ -114,16 +98,15 @@ class AirsoftController extends Controller
      * @param  \App\Models\Airsoft  $airsoft
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Airsoft $airsoft)
     {
-        //
-        DB::table('airsofts')->where('id', $id)->delete();
+        //wederom geen query nodig, gebruik wat laravel bied!
+        $airsoft->delete();
         return redirect()->route('index');
     }
 
     public function deletepage()
     {
-        //
         return view('/delete');
     }
 }
