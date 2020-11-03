@@ -18,27 +18,4 @@ Route::get('/', [
     'as' => 'index'
 ]);
 
-
-route::get('/add', [
-    'uses' => 'App\Http\Controllers\AirsoftController@getaddpage',
-    'as'=> 'addName'
-]);
-
-Route::post('/add', [
-    'uses' => 'App\Http\Controllers\AirsoftController@store',
-    'as' => 'postName',
-]);
-
-route::get('/delete/{id}', [
-    'uses' => 'App\Http\Controllers\AirsoftController@destroy',
-    'as'=> 'deletepage'
-]);
-route::get('/update/{id}', [
-    'uses' => 'App\Http\Controllers\AirsoftController@getIDForUpdate',
-    'as'=> 'updatepage'
-]);
-
-route::post('/update', [
-    'uses' => 'App\Http\Controllers\AirsoftController@update',
-    'as'=> 'update'
-]);
+Route::resource('airsofts', AirsoftController::class);
